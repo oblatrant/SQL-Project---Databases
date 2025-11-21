@@ -1,0 +1,41 @@
+
+CREATE TABLE Majors(
+    MajorID INT AUTO_INCREMENT PRIMARY KEY,
+    MajorName VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE Income_2_Year_Program(
+	IncomeID INT AUTO_INCREMENT PRIMARY KEY,
+    MajorID INT,
+    EarlyCareerIncome DECIMAL(10,2),
+    MidCareerIncome DECIMAL(10,2),
+    FOREIGN KEY (MajorID) REFERENCES Majors(MajorID) ON UPDATE CASCADE
+);
+
+
+CREATE TABLE Income_4_Year_Program(  
+	IncomeID INT AUTO_INCREMENT PRIMARY KEY,
+    MajorID INT,
+    EarlyCareerIncome DECIMAL(10,2),
+    MidCareerIncome DECIMAL(10,2),
+    FOREIGN KEY (MajorID) REFERENCES Majors(MajorID) ON UPDATE CASCADE
+);
+
+CREATE TABLE ACTScores(
+	ACTScoreID INT AUTO_INCREMENT PRIMARY KEY,
+	MajorID INT,
+	ScoreRange2 DECIMAL(5,2),
+    ScoreRange4 DECIMAL(5,2),
+	FOREIGN KEY (MajorID) REFERENCES Majors(MajorID) ON UPDATE CASCADE
+);
+
+
+CREATE TABLE CollegePlan(
+	CollegePlanID INT AUTO_INCREMENT PRIMARY KEY,
+    MajorID INT,
+    ProgramType VARCHAR(50),
+    FOREIGN KEY (MajorID) REFERENCES Majors(MajorID) ON UPDATE CASCADE
+); 
+
+SHOW TABLES;
